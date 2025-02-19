@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="#"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+	@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+	*{font-family:'Noto Sans TC','微軟正黑體';}
+	*,*::before,*::after{margin:0px; padding:0px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
+	.clearfix:after{content:''; display:block; height:0; clear:both; visibility:hidden;}
+	hr{margin:20px 0px;}
+	pre{border:2px solid deeppink; padding:5px; margin:2px; font-size:12px; background:rgba(255,255,255,0.7); clear:both; font-size:12px; font-family:'Source Code Pro';}
+	pre strong{color:#c00;}
+	pre em{font-style:normal; font-weight:bold; color:#006600;}
+	
+	
+
+	</style>
+</head>
+<body>
+	<h1>fabric 裁圖 外掛片段</h1>
+
+	<button class="btn_go">GO 載入一張圖</button>
+
+	<h2>■ 產生的圖</h2>
+	<div class="canvas_box">
+		<canvas id="myCanvas"></canvas>
+	</div>
+	<img class="userPhoto" src="https://fakeimg.pl/150x100/959/fff?font=noto&text=尚末產生圖">
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/451/fabric.min.js"></script>
+
+
+	<!-- 裁圖模組 -->
+	<script src="js/fabricCrop/fabricCrop.js"></script>
+	<link href="js/fabricCrop/fabricCrop.css" rel="stylesheet" type="text/css"/>
+	
+	<script>
+	$(function(){
+
+
+		//初始畫布寬高
+		let oldFabricW = 320; 
+		let oldFabricH = 320; 
+
+		//創建畫布
+		let myFabric = new fabric.Canvas("myCanvas", {
+			width:oldFabricW,
+			height:oldFabricH,
+			backgroundColor: "#ccc", // 背景色
+		});
+
+		myFabric.preserveObjectStacking = true; //維持元件堆疊的順序
+
+		
+		// 我要裁圖 
+		$(".btn_go").click(function(){
+			
+			//fnFabricCrop() 裁圖模組
+			fnFabricCrop({genWidth:300, ratio:1.5}, function(argBlobSrc){
+				$("img.userPhoto").attr({src:argBlobSrc});
+			});
+		});
+
+	});
+	</script>
+	
+</body>
+</html>

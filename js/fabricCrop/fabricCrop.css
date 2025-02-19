@@ -1,0 +1,39 @@
+/*fabric Crop 模組 ===================*/
+	/*簡易歸零*/
+	.fabricCrop *{font-family:'Noto Sans TC','微軟正黑體';}
+	.fabricCrop *,*::before,*::after{margin:0px; padding:0px; box-sizing:border-box;}
+
+	/*fabric*/
+	.fabricCrop{ width:100%; height:100vh; background:rgba(0, 0, 0, .8); position:fixed; left:0; top:0; border:0px solid red; }
+
+	/*inner*/
+	.fabricCrop .inner{ width:320px; height:480px; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); border:0px solid green; }
+
+	/*畫字*/
+	.fabricCrop .inner #myCanvasCrop{ outline:1px solid #999; }
+
+	/*按鈕 關閉模組*/
+	.fabricCrop .btn_close{ display:block; width:44px; height:44px; background:#000; position:absolute; right:10px; top:10px; z-index:20; cursor:pointer; border:1px solid #fff; }
+	.fabricCrop .btn_close::before,.fabricCrop .btn_close::after{ content:""; display:block; width:28px; height:2px; position:absolute; background:#fff; top:50%; left:50%; transform:translate(-50%,-50%); }
+	.fabricCrop .btn_close::before{ transform:translate(-50%,-50%) rotate(45deg); }
+	.fabricCrop .btn_close::after{ transform:translate(-50%,-50%) rotate(-45deg); }
+
+	/*按鈕 裁切*/
+	
+	.fabricCrop .btn_crop{ display:block; width:100%; height:44px; margin-top:10px; line-height:30px; background:#000; color:#fff; text-align:center; cursor:pointer; border-radius:4px; border:1px solid #999; }
+
+
+
+	/*拖拉上傳模組 =============*/
+	.fabricCrop .dropOn{ width:100%; height:100px; padding:5px; margin:0 auto 10px auto; background:#ccc; position:relative; border-radius:10px; border:4px dashed #999; }
+	.fabricCrop .dropOn.active{ border:4px dashed red; }
+
+	/*說明文*/
+	.fabricCrop .dropOn::before{ /*content:"限圖片 jpg png gif"; */ }
+	
+	/*假按鈕*/
+	.fabricCrop .dropOn::after{ content:"📁 點擊拖拉檔案上傳"; display:block; width:200px; height:30px; line-height:30px; background:#333; color:#fff; text-align:center; border-radius:4px; 
+	position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); }
+
+	/*inputFile 設定成滿框 並設成透明*/
+	.fabricCrop .dropOn input[type="file"]{ display:block; width:100%; height:100%; position:absolute; left:0; top:0; z-index:10; opacity:0; cursor:pointer; background:green; }
